@@ -15,11 +15,11 @@ input[WIDTH-1:0] In,
 output reg[WIDTH-1:0] Out
 );
 
-always_ff@(posedge system.clk) begin
-  if(system.rst)
+always_ff@(posedge System.Clk) begin
+  if(System.Rst)
     Out<=reset;
-  else if(en)
-    Out<=in;
+  else if(En)
+    Out<=In;
 end
 
 endmodule
