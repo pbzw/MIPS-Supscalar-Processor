@@ -20,6 +20,13 @@ logic Flush,Stall;
 typedef struct packed{
 logic [4:0]Src1,Src2,Rdst;
 }Source;
-
+//IF_ID_Port
+typedef struct packed{
+logic [31:0] Inst1;
+logic Inst1_en;
+logic [31:0] Inst2;
+logic Inst2_en;
+logic [31:0] PC;
+}IF_ID_Port;
 
 endpackage
