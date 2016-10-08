@@ -43,7 +43,7 @@ assign IS.Flush   =Branch_Flush;
 
 
 assign EX.Flush   =Branch_Flush;
-assign Inst1_req=!(Rename_Fales|Reorder_Buffer_Full);
+assign Inst_Req=!(Rename_Fales|Reorder_Buffer_Full);
 
 
 always_comb begin
