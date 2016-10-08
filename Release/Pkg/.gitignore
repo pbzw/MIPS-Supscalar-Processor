@@ -1,0 +1,4 @@
+# ignore non-Pkg source files
+*.*
+!*_Pkg.sv
+!.git*
