@@ -1,0 +1,4 @@
+# ignore non-sv source files
+*.*
+!*.sv
+!.git*
