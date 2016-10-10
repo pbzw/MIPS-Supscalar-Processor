@@ -7,7 +7,7 @@
 //
 
 module Regfile #(Read_Port=8,Write_Port=4,Width=32,Depth=64)(
-input clk,
+input Clk,
 input [Width-1:0] WD[Write_Port],
 input [$clog2(Depth)-1:0]WA[Write_Port],RA[Read_Port],
 input  We[Write_Port],
@@ -17,10 +17,9 @@ output logic[Width-1:0]RD[Read_Port]
 integer i,j,k;
 reg [31:0]file [0:63];
 
-`ifdef RTLsim
-initial begin //test use
-  for(k=0;k<Depth;k=k+1)
-    file[k]='d0;
+`ifdef vcs
+  initial begin
+    for(i=0;i<Depth;i++)file[i]<='0;
   end
 `endif
 
@@ -29,7 +28,8 @@ always_comb begin
     RD[j]=(|RA[j])?file[RA[j]]:'b0;
 end
 
-always_ff @(posedge clk)begin
+always @(posedge Clk)begin
+
   for(i=0;i<Write_Port;i++)
     if(We[i])
       file[WA[i]]<=WD[i];

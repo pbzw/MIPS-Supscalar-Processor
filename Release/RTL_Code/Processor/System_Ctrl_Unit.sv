@@ -19,7 +19,7 @@ input Commit,
 
 output Inst_Req,
 output logic[2:0]PCsrcSel,
-output Local IF,IF_ID,ID_RN,RN_IS,IS,EX,
+output Local IF,IF_ID,ID_RN,RN_IB,IB,EX,
 output logic Branch_Flush
 
 );
@@ -27,7 +27,7 @@ output logic Branch_Flush
 assign Branch_Flush=(Branch_Occur);
 
 
-assign IF.Stall=(Reorder_Buffer_Full|Rename_Fales)&(!Branch_Flush)|(!Inst_Ready);
+assign IF.Stall   =(Reorder_Buffer_Full|Rename_Fales)&(!Branch_Flush)|(!Inst_Ready);
 
 assign IF_ID.Stall=Rename_Fales|Reorder_Buffer_Full;
 assign IF_ID.Flush=Branch_Flush;
@@ -35,15 +35,15 @@ assign IF_ID.Flush=Branch_Flush;
 assign ID_RN.Stall=Rename_Fales|Reorder_Buffer_Full;
 assign ID_RN.Flush=Branch_Flush;
 
-assign RN_IS.Stall=Reorder_Buffer_Full;
-assign RN_IS.Flush=Branch_Flush|(Rename_Fales&(!Reorder_Buffer_Full));
+assign RN_IB.Stall=Reorder_Buffer_Full;
+assign RN_IB.Flush=Branch_Flush|(Rename_Fales&(!Reorder_Buffer_Full));
 
-assign IS.Stall=Reorder_Buffer_Full;
-assign IS.Flush   =Branch_Flush;
+assign IB.Stall   =Reorder_Buffer_Full;
+assign IB.Flush   =Branch_Flush;
 
 
 assign EX.Flush   =Branch_Flush;
-assign Inst_Req=!(Rename_Fales|Reorder_Buffer_Full);
+assign Inst_Req   =!(Rename_Fales|Reorder_Buffer_Full);
 
 
 always_comb begin

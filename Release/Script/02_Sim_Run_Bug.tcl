@@ -1,1 +1,1 @@
-./simv -ucli -do ../script/dump.tcl
+./simv -ucli -do ../Script/dump.tcl

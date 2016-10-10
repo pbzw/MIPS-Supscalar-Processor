@@ -44,8 +44,11 @@
 `define Op_Lbu      6'b10_0100
 `define Op_Lh       6'b10_0001
 `define Op_Lhu      6'b10_0101
-
+`define Op_Lui      6'b00_1111
+`define Op_Lw       6'b10_0011
 `define Op_Ori      6'b00_1101
+`define Op_Sh       6'b10_1001
+`define Op_Sb       6'b10_1000
 `define Op_Sll      `Op_Type_R
 `define Op_Sllv     `Op_Type_R
 `define Op_Slt      `Op_Type_R

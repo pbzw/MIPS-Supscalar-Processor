@@ -1,4 +1,0 @@
-# ignore non-tcl source files
-*.*
-!*.tcl
-!.git*

@@ -7,14 +7,6 @@
 //
 package Processor_Pkg;
 
-typedef struct packed{
-logic [31:0]Address;
-logic Req;
-}Mem_Req;
 
-typedef struct packed{
-logic [31:0]Data;
-logic Ready;
-}Mem_Respond;
 
 endpackage

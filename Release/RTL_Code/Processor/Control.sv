@@ -6,7 +6,13 @@
 //version : 1.0
 //
 
+
+
+`ifdef vcs
+`include "../Define/MIPS_Parameter.sv"
+`else
 `include "../../Define/MIPS_Parameter.sv"
+`endif
 
 import System_Pkg::*;
 module Control(
@@ -26,7 +32,6 @@ wire Dstselect,Itype;
 wire Link;
 wire J_Extend;
 wire B_inst;
-wire Jalr;
 wire [4:0] Rd = Inst.Data[15:11];
 
 reg  [7:0]DataPath;
@@ -86,7 +91,6 @@ always_comb begin
 end
 
 /*Dstselect_RegW*/
-assign Jalr     =DataPath[7];
 assign B_inst   =DataPath[6];
 assign J_Extend =DataPath[5];
 assign Link     =DataPath[4];
